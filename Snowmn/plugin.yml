@@ -1,0 +1,16 @@
+name: Snowmn
+main: cn.epicfx.winfxk.money.sn.Snowmn
+api:
+- 1.0.0
+version: 1.1.2
+load: STARTUP
+website: http://Winfxk.EpicFX.cn
+author: Winfxk
+description: 雪花货币插件
+permissions:
+   Snowmn.Command.Main:
+      description: 雪花插件主命令
+      default: true
+   Snowmn.Command.Admin:
+      description: 雪花插件管理员命令
+      default: op
