@@ -1,1 +1,57 @@
 无权执行命令: §4你没得权限执行这个命令！
+广播内容: '{RandColor}{Player}{RandColor}当前有{NormMoney}'
+货币:
+   碎月: '{RandColor}{Money}{MoneyName}'
+   霜月: '{RandColor}{Money}{Shimotsuki}'
+   雪月: '{RandColor}{Money}{SnowMonth}'
+   寒月: '{RandColor}{Money}{Kangetsu}'
+   无货币: '{RandColor}你穷的一批'
+界面:
+   处理错误: §4无法正确处理该界面的数据！请联系管理员。{n}{Error}
+   主页:
+      标题: '{RandColor}{PluginName}'
+      内容: '{RandColor}欢迎尊敬的{RandColor}{Player}{RandColor}来到{RandColor}{ServerName}{n}{RandColor}感谢使用{RandColor}{PluginName}'
+      支付: '{RandColor}支付{MoneyName}'
+      索要: '{RandColor}索要{MoneyName}'
+      我的: '{RandColor}查看我的{MoneyName}'
+      排行榜: '{RandColor}查看排行榜'
+   支付:
+      标题: '{RandColor}支付{RandColor}{MoneyName}'
+      未输入金币数: §4请输入想要支付的{RandColor}{MoneyName}§4数
+      金币数不符合规范: '{RandColor}{MoneyName}§4数仅支持大于零的纯数字！'
+      支付警告: '{RandColor}支付警告'
+      不能支付给自己: §4您不能向自己支付{MoneyName}
+      支付警告内容: §4确定要向{RandColor}{ByPlayer}§f(§8{isOnline}§f)§4支付{RandColor}{Money}§4{MoneyName}吗？{n}请认真确定，支付后将不再退还。
+      请输入玩家名: 请输入想要支付的玩家名
+      请选择玩家名: 请选择想要支付的玩家（当上方输入框不为空时该项不启用）
+      请输入金币数: 请输入想要支付的{MoneyName}数
+      支付成功: §6您成功支付§9{Money}§6{MoneyName}给§2{ByPlayer}
+      收到支付: §8{Player}§6成功向您支付§9{Money}§6{MoneyName}
+      无玩家: §4该玩家从未加入过服务器！
+      确定: §6确定
+      取消: §4取消
+   个人主页:
+      标题: '{RandColor}个人主页'
+      内容: '{n}{n}{n}        {RandColor}您当前有{NormMoney}{n}'
+      广播: '{RandColor}广播我的{MoneyName}数'
+      取消: '{RandColor}取消'
+   索要:
+      标题: '{RandColor}索要{MoneyName}'
+      未输入金币数: §4请输入想要索要的{RandColor}{MoneyName}§4数
+      金币数不符合规范: '{RandColor}{MoneyName}§4数仅支持大于零的纯数字！'
+      不能向自己索要: §4您不能向自己索要{MoneyName}
+      索要请求: '{RandColor}{Player}§6正在向您索要{MoneyName}，共计§8{NormMoney}§f（§4{Money}§f）{n}{n}§4确定要向{RandColor}{ByPlayer}§f(§8{isOnline}§f)§4支付{RandColor}{Money}§4{MoneyName}吗？{n}请认真确定，支付后将不再退还。'
+      请输入玩家名: 请输入想要索要的玩家名
+      请选择玩家名: 请选择想要索要的玩家（当上方输入框不为空时该项不启用）
+      请输入金币数: 请输入想要索要的{MoneyName}数
+      支付成功: §6您成功支付§9{Money}§6{MoneyName}给§2{ByPlayer}
+      收到支付: §8{Player}§6成功向您支付§9{Money}§6{MoneyName}
+      无玩家: §4该玩家从未加入过服务器！
+      拒绝支付: §6您拒绝了{ByPlayer}的说要请求！
+      拒绝索要: §4{ByPlayer}拒绝了您的索要请求
+      不在线: §4该玩家不在线！
+      确定: §6确定
+      取消: §4取消
+   排行榜:
+      标题: §e§l§n排行榜
+      获取列表失败: §4无法获取排行榜信息!

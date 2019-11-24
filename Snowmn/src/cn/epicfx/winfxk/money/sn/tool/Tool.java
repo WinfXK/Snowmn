@@ -318,27 +318,6 @@ public class Tool implements X509TrustManager, HostnameVerifier {
 	}
 
 	/**
-	 * 将Map按数据升序排列
-	 * 
-	 * @param map
-	 * @return
-	 */
-	public static <K, V extends Comparable<? super V>> Map<K, V> sortByValueDescending(Map<K, V> map) {
-		List<Map.Entry<K, V>> list = new LinkedList<>(map.entrySet());
-		Collections.sort(list, new Comparator<Map.Entry<K, V>>() {
-			@Override
-			public int compare(Map.Entry<K, V> o1, Map.Entry<K, V> o2) {
-				int compare = (o1.getValue()).compareTo(o2.getValue());
-				return -compare;
-			}
-		});
-		Map<K, V> result = new LinkedHashMap<>();
-		for (Map.Entry<K, V> entry : list)
-			result.put(entry.getKey(), entry.getValue());
-		return result;
-	}
-
-	/**
 	 * 设置小数长度</br>
 	 * 默认保留两位小数</br>
 	 * 
@@ -769,5 +748,84 @@ public class Tool implements X509TrustManager, HostnameVerifier {
 			list.add(map);
 		}
 		return list;
+	}
+
+	/**
+	 * 将未知参数转换为小数
+	 * 
+	 * @param obj
+	 * @param double1
+	 * @return
+	 */
+	public static Double ObjectToDouble(Object obj) {
+		return ObjectToDouble(obj, 0d);
+	}
+
+	/**
+	 * 将未知参数转换为小数
+	 * 
+	 * @param obj
+	 * @param double1
+	 * @return
+	 */
+	public static Double ObjectToDouble(Object obj, Double double1) {
+		if (obj == null)
+			return double1;
+		double d;
+		try {
+			String S = String.valueOf(obj);
+			if (S == null || S.isEmpty())
+				return double1;
+			d = Double.valueOf(S);
+		} catch (Exception e) {
+			return double1;
+		}
+		return d;
+	}
+
+	/**
+	 * 将Map按数据升序排列
+	 * 
+	 * @param <K>
+	 * @param <V>
+	 * @param map
+	 * @return
+	 */
+	public static <K, V extends Comparable<? super V>> Map<K, V> sortByValueAscending(Map<K, V> map) {
+		List<Map.Entry<K, V>> list = new LinkedList<>(map.entrySet());
+		Collections.sort(list, new Comparator<Map.Entry<K, V>>() {
+			@Override
+			public int compare(Map.Entry<K, V> o1, Map.Entry<K, V> o2) {
+				int compare = (o1.getValue()).compareTo(o2.getValue());
+				return compare;
+			}
+		});
+		Map<K, V> result = new LinkedHashMap<>();
+		for (Map.Entry<K, V> entry : list)
+			result.put(entry.getKey(), entry.getValue());
+		return result;
+	}
+
+	/**
+	 * 将Map降序排序
+	 * 
+	 * @param <K>
+	 * @param <V>
+	 * @param map
+	 * @return
+	 */
+	public static <K, V extends Comparable<? super V>> Map<K, V> sortByValueDescending(Map<K, V> map) {
+		List<Map.Entry<K, V>> list = new LinkedList<>(map.entrySet());
+		Collections.sort(list, new Comparator<Map.Entry<K, V>>() {
+			@Override
+			public int compare(Map.Entry<K, V> o1, Map.Entry<K, V> o2) {
+				int compare = (o1.getValue()).compareTo(o2.getValue());
+				return -compare;
+			}
+		});
+		Map<K, V> result = new LinkedHashMap<>();
+		for (Map.Entry<K, V> entry : list)
+			result.put(entry.getKey(), entry.getValue());
+		return result;
 	}
 }

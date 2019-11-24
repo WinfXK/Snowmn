@@ -27,12 +27,11 @@ public class startThread extends Thread {
 				if (WhileTime < 0) {
 					WhileTime = kick.config.getInt("循环间隔");
 					Map<UUID, Player> Players = Server.getInstance().getOnlinePlayers();
-					for (UUID id : Players.keySet()) {
-						Player player = Players.get(id);
+					for (Player player : Players.values())
 						if (!player.isOnline())
 							continue;
-						Money.addMoney(player, kick.config.getDouble("每次增加"));
-					}
+						else
+							Money.addMoney(player, kick.config.getDouble("每次增加"));
 				} else
 					WhileTime--;
 			} catch (InterruptedException e) {

@@ -2,7 +2,7 @@ name: Snowmn
 main: cn.epicfx.winfxk.money.sn.Snowmn
 api:
 - 1.0.0
-version: 1.1.2
+version: 1.0.0
 load: STARTUP
 website: http://Winfxk.EpicFX.cn
 author: Winfxk

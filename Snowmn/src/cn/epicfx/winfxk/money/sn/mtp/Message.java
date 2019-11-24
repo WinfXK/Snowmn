@@ -7,6 +7,7 @@ import java.util.Map;
 import cn.epicfx.winfxk.money.sn.Money;
 import cn.epicfx.winfxk.money.sn.Snowmn;
 import cn.epicfx.winfxk.money.sn.tool.Tool;
+import cn.nukkit.Player;
 import cn.nukkit.utils.Config;
 
 /**
@@ -15,7 +16,8 @@ import cn.nukkit.utils.Config;
 @SuppressWarnings("unchecked")
 public class Message {
 	private Snowmn mis;
-	private String[] Key = { "{n}", "{RandColor}", "{ServerName}", "{PluginName}", "{MoneyName}", "{Time}", "{Date}" };
+	private String[] Key = { "{n}", /* "{RandColor}", */ "{ServerName}", "{PluginName}", "{MoneyName}", "{Time}",
+			"{Date}", "{Shimotsuki}", "{SnowMonth}", "{Kangetsu}" };
 	private String[] Data = {};
 	private Config Message;
 
@@ -25,8 +27,9 @@ public class Message {
 	}
 
 	private void load() {
-		Data = new String[] { "\n", Tool.getRandColor(), mis.getServer().getMotd(), mis.getName(),
-				Snowmn.getMoneyName(), Tool.getTime(), Tool.getDate() };
+		Data = new String[] { "\n", mis.getServer().getMotd(), mis.getName(), Snowmn.getMoneyName(), Tool.getTime(),
+				Tool.getDate(), Kick.kick.config.getString("二阶货币单位"), Kick.kick.config.getString("三阶货币单位"),
+				Kick.kick.config.getString("四阶货币单位") };
 	}
 
 	public String getSun(String t, String Son, String Sun) {
@@ -45,6 +48,11 @@ public class Message {
 		return null;
 	}
 
+	public String getSun(String t, String Son, String Sun, Player player) {
+		return getSun(t, Son, Sun, new String[] { "{Player}", "{Money}" },
+				new Object[] { player.getName(), Money.getMoney(player) });
+	}
+
 	public String getSun(String t, String Son, String Sun, MyPlayer myPlayer) {
 		return getSun(t, Son, Sun, new String[] { "{Player}", "{Money}" },
 				new Object[] { myPlayer.player.getName(), Money.getMoney(myPlayer.player) });
@@ -52,6 +60,11 @@ public class Message {
 
 	public String getSon(String t, String Son) {
 		return getSon(t, Son, new String[] {}, new String[] {});
+	}
+
+	public String getSon(String t, String Son, Player player) {
+		return getSon(t, Son, new String[] { "{Player}", "{Money}" },
+				new Object[] { player.getName(), Money.getMoney(player) });
 	}
 
 	public String getSon(String t, String Son, MyPlayer myPlayer) {
@@ -66,6 +79,11 @@ public class Message {
 				return getText(map.get(Son).toString(), k, d);
 		}
 		return null;
+	}
+
+	public String getMessage(String t, Player player) {
+		return getMessage(t, new String[] { "{Player}", "{Money}" },
+				new Object[] { player.getName(), Money.getMoney(player) });
 	}
 
 	public String getMessage(String t, MyPlayer myPlayer) {
@@ -92,6 +110,12 @@ public class Message {
 		for (int i = 0; (i < k.length && i < d.length); i++)
 			if (text.contains(k[i]))
 				text = text.replace(k[i], String.valueOf(d[i]));
+		if (text.contains("{RandColor}")) {
+			String[] strings = text.split("\\{RandColor\\}");
+			text = "";
+			for (String s : strings)
+				text += (text.isEmpty() ? "" : Tool.getRandColor()) + s;
+		}
 		return text;
 	}
 }

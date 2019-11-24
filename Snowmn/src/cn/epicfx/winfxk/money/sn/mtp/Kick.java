@@ -46,7 +46,7 @@ public class Kick {
 	/**
 	 * 要初始化的表单ID键值
 	 */
-	public static final String[] FormIDName = {};
+	public static final String[] FormIDName = { /* 0 */"主页", /* 1 */"玩家交互子页", /* 2 */"玩家交互子页确定页" };
 	/**
 	 * 表单ID存储位置
 	 */

@@ -12,12 +12,12 @@ import cn.nukkit.command.data.CommandParameter;
 /**
  * @author Winfxk
  */
-public class PCommand extends Command {
+public class ACommand extends Command {
 	private Kick kick;
 	private Message msg;
 
-	public PCommand(Kick kick) {
-		super("sw", "雪花货币主命令", "/sw");
+	public ACommand(Kick kick) {
+		super("aw", "雪花货币管理员命令", "/aw");
 		commandParameters = new HashMap<>();
 		commandParameters.put("打开雪花货币主页", new CommandParameter[] {});
 		this.kick = kick;

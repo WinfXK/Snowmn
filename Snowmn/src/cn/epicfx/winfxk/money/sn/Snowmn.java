@@ -10,14 +10,13 @@ import cn.epicfx.winfxk.money.sn.mtp.Kick;
 import cn.epicfx.winfxk.money.sn.mtp.MyPlayer;
 import cn.epicfx.winfxk.money.sn.tool.Tool;
 import cn.nukkit.Player;
-import cn.nukkit.event.Listener;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.TextFormat;
 
 /**
  * @author Winfxk
  */
-public class Snowmn extends PluginBase implements Listener {
+public class Snowmn extends PluginBase {
 	private Temporal loadTime = Instant.now();
 	private static Kick kick;
 
@@ -32,6 +31,7 @@ public class Snowmn extends PluginBase implements Listener {
 			if (player.isOnline() && !kick.PlayerDataMap.containsKey(player.getName()))
 				kick.PlayerDataMap.put(player.getName(), new MyPlayer(player));
 		}
+		this.getServer().getPluginManager().registerEvents(new Dispose(kick), this);
 		String onEnableString = (entime > 1000 ? ((entime / 1000) + "§6s!(碉堡了) ") : entime + "§6ms");
 		this.getServer().getLogger().info(Tool.getColorFont(this.getName() + "启动！") + "§6总耗时:§9" + onEnableString
 				+ " 启动耗时:§9" + ((float) (Duration.between(EnableTime, Instant.now()).toMillis())) + "§6ms");
