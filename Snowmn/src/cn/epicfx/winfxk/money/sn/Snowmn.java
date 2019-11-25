@@ -25,6 +25,7 @@ public class Snowmn extends PluginBase {
 		Instant EnableTime = Instant.now();
 		float entime = ((Duration.between(loadTime, Instant.now()).toMillis()));
 		this.getServer().getCommandMap().register(getName(), new PCommand(kick));
+		this.getServer().getCommandMap().register(getName(), new ACommand(kick));
 		Map<UUID, Player> OnlinePlayers = getServer().getOnlinePlayers();
 		for (UUID id : OnlinePlayers.keySet()) {
 			Player player = OnlinePlayers.get(id);
