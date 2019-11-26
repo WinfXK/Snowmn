@@ -12,6 +12,7 @@ import cn.nukkit.utils.Config;
  * @author Winfxk
  */
 public class Money {
+
 	/**
 	 * 增加一个玩家的碎月
 	 * 
@@ -170,20 +171,10 @@ public class Money {
 	 */
 	public static String getNormMoney(String player) {
 		double money = getMoney(player);
-		int k = (int) (money / 1000000000);
-		money = money % 1000000000;
-		int sm = (int) (money / 1000000);
-		money = money % 1000000;
-		int st = (int) (money / 1000);
-		money = Tool.Double2(money % 1000);
-		Message msg = Kick.kick.Message;
-		String ms = msg.getSon("货币", "碎月", new String[] { "{Player}", "{Money}" }, new Object[] { player, money });
-		String sts = msg.getSon("货币", "霜月", new String[] { "{Player}", "{Money}" }, new Object[] { player, st });
-		String sms = msg.getSon("货币", "雪月", new String[] { "{Player}", "{Money}" }, new Object[] { player, sm });
-		String ks = msg.getSon("货币", "寒月", new String[] { "{Player}", "{Money}" }, new Object[] { player, k });
-		String string = (k > 0 ? ks : "") + (st > 0 ? sts : "") + (sm > 0 ? sms : "") + (money > 0 ? ms : "");
+		String string = getNormMoney(money);
 		return string.isEmpty()
-				? msg.getSon("货币", "无货币", new String[] { "{Player}", "{Money}" }, new Object[] { player, k })
+				? Kick.kick.Message.getSon("货币", "无货币", new String[] { "{Player}", "{Money}" },
+						new Object[] { player, money })
 				: string;
 	}
 
@@ -215,7 +206,7 @@ public class Money {
 		String sts = msg.getSon("货币", "霜月", new String[] { "{Money}" }, new Object[] { st });
 		String sms = msg.getSon("货币", "雪月", new String[] { "{Money}" }, new Object[] { sm });
 		String ks = msg.getSon("货币", "寒月", new String[] { "{Money}" }, new Object[] { k });
-		String string = (k > 0 ? ks : "") + (st > 0 ? sts : "") + (sm > 0 ? sms : "") + (money > 0 ? ms : "");
+		String string = (k > 0 ? ks : "") + (sm > 0 ? sms : "") + (st > 0 ? sts : "") + (money > 0 ? ms : "");
 		return string.isEmpty() ? ms : string;
 	}
 

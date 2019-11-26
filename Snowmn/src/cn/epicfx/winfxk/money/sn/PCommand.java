@@ -16,7 +16,7 @@ public class PCommand extends Command {
 	private final String Permission = "Snowmn.Command.Main";
 
 	public PCommand(Kick kick) {
-		super("sw", "雪花货币主命令", "/sw");
+		super("sw", Snowmn.getMoneyName() + "主命令", "/sw");
 		this.setPermission(Permission);
 		this.commandParameters.clear();
 		commandParameters.put("打开雪花货币主页", new CommandParameter[] {});

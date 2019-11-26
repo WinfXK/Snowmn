@@ -3,6 +3,7 @@ package cn.epicfx.winfxk.money.sn.mtp;
 import java.io.File;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import cn.epicfx.winfxk.money.sn.form.BaseForm;
@@ -24,13 +25,8 @@ public class MyPlayer {
 	public MyPlayer(Player player) {
 		this.player = player;
 		File file = getPlayerFile(player.getName());
-		if (!file.exists()) {
-			Config config = new Config(file, Config.YAML);
-			config.set("Player", player.getName());
-			config.set("Money", Kick.kick.config.get("玩家初始金币"));
-			config.set("Msg", new ArrayList<String>());
-			config.save();
-		}
+		if (!file.exists())
+			reloadConfig(player.getName());
 	}
 
 	public static Config getConfig(String player) {
@@ -51,5 +47,20 @@ public class MyPlayer {
 	public static boolean Playerexists(String player) {
 		File file = getPlayerFile(player);
 		return file.exists();
+	}
+
+	public static boolean reloadConfig(String name) {
+		Config config = new Config(getPlayerFile(name), Config.YAML);
+		config.setAll(DefaultConfig());
+		config.set("Player", name);
+		return config.save();
+	}
+
+	public static LinkedHashMap<String, Object> DefaultConfig() {
+		LinkedHashMap<String, Object> map = new LinkedHashMap<>();
+		map.put("Player", null);
+		map.put("Money", Kick.kick.config.get("玩家初始金币"));
+		map.put("Msg", new ArrayList<String>());
+		return map;
 	}
 }
